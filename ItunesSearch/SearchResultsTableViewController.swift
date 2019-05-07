@@ -10,11 +10,22 @@ import UIKit
 
 class SearchResultsTableViewController: UITableViewController, UISearchBarDelegate {
 
+    // MARK: Constants
+    
     let searchResultsController = SearchResultController()
 
+    // MARK: Outlets
+    
     @IBOutlet var segmentControl: UISegmentedControl!
     @IBOutlet var searchBar: UISearchBar!
     
+    // MARK: Actions
+    
+    @objc func segmentControlPressed(sender: UISegmentedControl){
+        searchBarSearchButtonClicked(searchBar: searchBar)
+    }
+    
+    // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -22,9 +33,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         segmentControl.addTarget(self, action: #selector(segmentControlPressed(sender:)), for: .touchUpInside)
     }
     
-    @objc func segmentControlPressed(sender: UISegmentedControl){
-        searchBarSearchButtonClicked(searchBar: searchBar)
-    }
+    // MARK: Search
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         var resultType: ResultType!

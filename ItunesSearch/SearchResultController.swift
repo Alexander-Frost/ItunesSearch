@@ -9,6 +9,9 @@
 import Foundation
 
 class SearchResultController {
+    
+    // MARK: Constants
+    
     let baseURL = URL(string: "https://itunes.apple.com/search")!
     var searchResults: [SearchResult] = []
     
