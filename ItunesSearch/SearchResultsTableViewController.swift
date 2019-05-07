@@ -18,45 +18,37 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        
+        segmentControl.addTarget(self, action: #selector(segmentControlPressed(sender:)), for: .touchUpInside)
     }
     
-    func searchBarSearchButtonClicked(){
+    @objc func segmentControlPressed(sender: UISegmentedControl){
+        searchBarSearchButtonClicked(searchBar: searchBar)
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
         var resultType: ResultType!
         guard let searchTerm = searchBar.text else {return}
         
         switch segmentControl.selectedSegmentIndex {
         case 0:
             resultType = .software
-            searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType) { (error) in
-                if let error = error {
-                    print("There was an error: \(error)")
-                } else {
-                    self.tableView.reloadData()
-                }
-                return
-            }
         case 1:
             resultType = .musicTrack
-            searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType) { (error) in
-                if let error = error {
-                    print("There was an error: \(error)")
-                } else {
-                    self.tableView.reloadData()
-                }
-                return
-            }
         case 2:
             resultType = .movie
-            searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType) { (error) in
-                if let error = error {
-                    print("There was an error: \(error)")
-                } else {
-                    self.tableView.reloadData()
-                }
-                return
-            }
         default:
             break
+        }
+        
+        searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType) { (error) in
+            if let error = error {
+                print("There was an error: \(error)")
+            } else {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
 
