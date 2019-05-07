@@ -12,6 +12,10 @@
 		FA73699E228214420082434C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA73699C228214420082434C /* Main.storyboard */; };
 		FA7369A0228214430082434C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA73699F228214430082434C /* Assets.xcassets */; };
 		FA7369A3228214430082434C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7369A1228214430082434C /* LaunchScreen.storyboard */; };
+		FA7369AB228215840082434C /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7369AA228215840082434C /* SearchResult.swift */; };
+		FA7369AD228215E30082434C /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7369AC228215E30082434C /* ResultType.swift */; };
+		FA7369AF228217D90082434C /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7369AE228217D90082434C /* SearchResultController.swift */; };
+		FA7369B12282203B0082434C /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7369B02282203B0082434C /* SearchResultsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		FA73699F228214430082434C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7369A2228214430082434C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7369A4228214430082434C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA7369AA228215840082434C /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		FA7369AC228215E30082434C /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		FA7369AE228217D90082434C /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		FA7369B02282203B0082434C /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				FA73699F228214430082434C /* Assets.xcassets */,
 				FA7369A1228214430082434C /* LaunchScreen.storyboard */,
 				FA7369A4228214430082434C /* Info.plist */,
+				FA7369AA228215840082434C /* SearchResult.swift */,
+				FA7369AC228215E30082434C /* ResultType.swift */,
+				FA7369AE228217D90082434C /* SearchResultController.swift */,
+				FA7369B02282203B0082434C /* SearchResultsTableViewController.swift */,
 			);
 			path = ItunesSearch;
 			sourceTree = "<group>";
@@ -135,8 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7369AD228215E30082434C /* ResultType.swift in Sources */,
 				FA73699B228214420082434C /* ViewController.swift in Sources */,
+				FA7369B12282203B0082434C /* SearchResultsTableViewController.swift in Sources */,
+				FA7369AB228215840082434C /* SearchResult.swift in Sources */,
 				FA736999228214420082434C /* AppDelegate.swift in Sources */,
+				FA7369AF228217D90082434C /* SearchResultController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
