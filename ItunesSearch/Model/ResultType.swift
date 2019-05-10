@@ -8,8 +8,9 @@
 
 import Foundation
 
+// types of items we want to search for in api
 enum ResultType: String {
-    case software = "software"
+    case software = "software" //apps
     case musicTrack = "musicTrack"
     case movie = "movie"
 }

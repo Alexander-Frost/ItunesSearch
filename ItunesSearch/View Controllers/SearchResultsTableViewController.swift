@@ -22,12 +22,15 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     // MARK: Actions
     
     @objc func segmentControlPressed(sender: UISegmentedControl){
-        searchBarSearchButtonClicked(searchBar: searchBar)
+        searchBarSearchButtonClicked(searchBar)
+        print("Clicked segmented control.")
     }
     
     // MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set search bar delegate
         searchBar.delegate = self
         
         segmentControl.addTarget(self, action: #selector(segmentControlPressed(sender:)), for: .touchUpInside)
@@ -35,10 +38,15 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     // MARK: Search
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+    func searchBarSearchButtonClicked(_: UISearchBar){
+        
+        // holds segment control selection
         var resultType: ResultType!
+        
+        // set search term
         guard let searchTerm = searchBar.text else {return}
         
+        // setup types of searches
         switch segmentControl.selectedSegmentIndex {
         case 0:
             resultType = .software
@@ -50,15 +58,18 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
             break
         }
         
-        searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType) { (error) in
+        // call search function
+        searchResultsController.performSearch(searchTerm: searchTerm, resultType: resultType, completion:{error in
+            
             if let error = error {
                 print("There was an error: \(error)")
             } else {
+                print("performSearch has run.")
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-            }
-        }
+        }})
+        
     }
 
     // MARK: - Table view data source
@@ -69,6 +80,8 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
+        
+        // get the array result at our index path
         let searchResult = searchResultsController.searchResults[indexPath.row]
         
         cell.textLabel?.text = searchResult.title
@@ -76,15 +89,5 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
